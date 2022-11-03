@@ -1,5 +1,7 @@
 import React from "react"
 import Container from "../components/pagestructure/Container"
+import Button from "../components/interactive/Button"
+import Type from "../components/typography/Type"
 
 
 const Hero = () => (	
@@ -10,9 +12,9 @@ const Hero = () => (
 		<div className="w-2/5">
 			<div className="h-full w-full bg-black flex items-center justify-center">
 				<div>
-					<h1 className="text-5xl font-bold mb-5">Preparing a ClimateTech investment pitch?</h1> 
-					<h2 className="text-xl font-light mb-10">Pitchmark helps ClimateTech founders prepare, practice, and deliver pitches that win investment.</h2>
-					<button className="bg-pitchmark-pink font-bold py-4 px-8 text-sm rounded-md">Get started</button>
+					<Type type="h1" text="Preparing a ClimateTech investment pitch?"/> 
+					<Type type="para1" text="Pitchmark is a simple, affordable bundle of services to help ClimateTech founders prepare, practice, and deliver pitches that win investment."/>
+					<Button title="Get started" url=""/>
 				</div>
 			</div>
 		</div>
