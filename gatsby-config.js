@@ -1,7 +1,11 @@
 module.exports = {
   siteMetadata: {
     title: `Pitchmark`,
-    siteUrl: `https://www.yourdomain.tld`,
+    siteUrl: `https://pitchmark.co`,
+    description: `Win ClimateTech pitches`
   },
-  plugins: [],
+  plugins: [
+    
+    'gatsby-plugin-postcss',
+  ],
 }
