@@ -46,6 +46,10 @@ const type = props.type;
 		return (
 			<p className="text-md font-light mb-3">{text}</p>  
 		);
+		case "para3":
+		return (
+			<p className="text-xs font-light mb-3">{text}</p>  
+		);
 		break;
 		default: 
 		return (
