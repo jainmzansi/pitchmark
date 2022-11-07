@@ -14,7 +14,7 @@ const Hero = () => (
 				<div className="">
 					<Type type="h1" text="Preparing a ClimateTech investment pitch?"/> 
 					<Type type="para1" text="Pitchmark is a simple, affordable bundle of services to help ClimateTech founders prepare, practice, and deliver pitches that win investment."/>
-					<Button title="Get started" url=""/>
+					<Button title="Get started" url="/pitchreadiness"/>
 				</div>
 			</div>
 		</div>

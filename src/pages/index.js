@@ -50,7 +50,7 @@ const IndexPage = () => {
             </div>
      
             <div className="w-full lg:w-1/2 text-left lg:text-right mt-4 lg:mt-0">
-              <button className="border-b pb-3 bg-Pitchmark-Success bg-no-repeat pl-12 border-pitchmark-green text-pitchmark-green mb-16">Actionable checklist</button>
+              <button className="border-b pb-3 bg-Pitchmark-Success bg-no-repeat pl-12 border-green text-green mb-16">Actionable checklist</button>
               <img
                 className="w-full rounded-md  invisible lg:visible h-0 lg:h-auto"
                 src="https://ik.imagekit.io/pathventures/images/founder?ik-sdk-version=javascript-1.4.3&updatedAt=1665990166609"
@@ -89,7 +89,7 @@ const IndexPage = () => {
             </div>
           
             <div className="w-full lg:w-1/2 text-left lg:text-left mt-4  lg:mt-0">
-              <button className="border-b pb-3 bg-Pitchmark-Success bg-no-repeat pl-12 border-pitchmark-green text-pitchmark-green mb-16">Your story brought to life</button>
+              <button className="border-b pb-3 bg-Pitchmark-Success bg-no-repeat pl-12 border-green text-green mb-16">Your story brought to life</button>
               <img
                 className="w-80 rounded-md  invisible lg:visible h-0 lg:h-auto mx-auto"
                 src="https://ik.imagekit.io/pathventures/pitchmark/New/Pitchmark-protect_WEibjBvqGq.svg?ik-sdk-version=javascript-1.4.3&updatedAt=1667453669536"
@@ -127,7 +127,7 @@ const IndexPage = () => {
             </div>
           
             <div className="w-full lg:w-1/2 text-left lg:text-right mt-4  lg:mt-0">
-              <button className="border-b pb-3 bg-Pitchmark-Success bg-no-repeat pl-12 border-pitchmark-green text-pitchmark-green mb-16">Re-designed pitch deck</button>
+              <button className="border-b pb-3 bg-Pitchmark-Success bg-no-repeat pl-12 border-green text-green mb-16">Re-designed pitch deck</button>
               <img
                 className="w-full rounded-md  invisible lg:visible h-0 lg:h-auto"
                 src="https://ik.imagekit.io/pathventures/images/collaborating?ik-sdk-version=javascript-1.4.3&updatedAt=1656734289270"
@@ -172,7 +172,7 @@ const IndexPage = () => {
             </div>
           
             <div className="w-full lg:w-1/2 text-left lg:text-left mt-4 lg:mt-0">
-              <button className="border-b pb-3 bg-Pitchmark-Success bg-no-repeat pl-12 border-pitchmark-green text-pitchmark-green mb-16">Confident and prepared</button>
+              <button className="border-b pb-3 bg-Pitchmark-Success bg-no-repeat pl-12 border-green text-green mb-16">Confident and prepared</button>
               <img
                 className="w-80 rounded-md  invisible lg:visible h-0 lg:h-auto mx-auto"
                 src="https://ik.imagekit.io/pathventures/pitchmark/New/Pitchmark-Present_-raiG-OPM.svg?ik-sdk-version=javascript-1.4.3&updatedAt=1667453672227"
@@ -187,7 +187,7 @@ const IndexPage = () => {
       {/*  Creds  */}
       
         
-      <div className="bg-pitchmark-tan py-16 my-32">
+      <div className="bg-tan py-16 my-32">
         <Container>
         <div className="flex flex-col lg:flex-row">
           <div className="w-full lg:w-1/2 pr-16">
@@ -196,7 +196,7 @@ const IndexPage = () => {
             <Type type="para2" text="With so much at stake, it's no wonder founders find it daunting. What does good look like? What’s the right level of detail? Does it tell a motivating story?"/>
             <Type type="para2" text="We’ve spent the last 17 years telling stories that convince investors. Together, we've helped over 45 companies raise more than $50m in funding."/>
              <Type type="para2" text="Now we've designed Pitchmark to help us share that experience with the ClimateTech startups we know need to be funded, for all of our futures."/>
-            <div className="mt-10"><Button title="Get started" url=""/></div>
+            <div className="mt-10"><Button title="Get started" url="/pitchreadiness"/></div>
           </div>
           <div className="w-full lg:w-1/2 mt-20 lg:mt-0">
             <div className="mx-auto w-4/5 flex items-center justify-center h-full">
@@ -232,21 +232,21 @@ const IndexPage = () => {
       
       <Container>
       <div className="grid grid-cols-2 lg:grid-cols-5 gaps-8">
-        <div><div className="w-40 h-16 border border-pitchmark-green rounded-xl m-10"/></div>
-        <div><div className="w-40 h-16 border border-pitchmark-green rounded-xl m-10"/></div>
-        <div><div className="w-40 h-16 border border-pitchmark-green rounded-xl m-10"/></div>
-        <div><div className="w-40 h-16 border border-pitchmark-green rounded-xl m-10"/></div>
-        <div><div className="w-40 h-16 border border-pitchmark-green rounded-xl m-10"/></div>
-        <div><div className="w-40 h-16 border border-pitchmark-green rounded-xl m-10"/></div>
-        <div><div className="w-40 h-16 border border-pitchmark-green rounded-xl m-10"/></div>
-        <div><div className="w-40 h-16 border border-pitchmark-green rounded-xl m-10"/></div>
-        <div><div className="w-40 h-16 border border-pitchmark-green rounded-xl m-10"/></div>
-        <div><div className="w-40 h-16 border border-pitchmark-green rounded-xl m-10"/> </div>
-        <div><div className="w-40 h-16 border border-pitchmark-green rounded-xl m-10"/></div>
-        <div><div className="w-40 h-16 border border-pitchmark-green rounded-xl m-10"/></div>
-        <div><div className="w-40 h-16 border border-pitchmark-green rounded-xl m-10"/>   </div>
-        <div><div className="w-40 h-16 border border-pitchmark-green rounded-xl m-10"/> </div>
-        <div><div className="w-40 h-16 border border-pitchmark-green rounded-xl m-10"/></div>
+        <div><div className="w-40 h-16 border border-green rounded-xl m-10"/></div>
+        <div><div className="w-40 h-16 border border-green rounded-xl m-10"/></div>
+        <div><div className="w-40 h-16 border border-green rounded-xl m-10"/></div>
+        <div><div className="w-40 h-16 border border-green rounded-xl m-10"/></div>
+        <div><div className="w-40 h-16 border border-green rounded-xl m-10"/></div>
+        <div><div className="w-40 h-16 border border-green rounded-xl m-10"/></div>
+        <div><div className="w-40 h-16 border border-green rounded-xl m-10"/></div>
+        <div><div className="w-40 h-16 border border-green rounded-xl m-10"/></div>
+        <div><div className="w-40 h-16 border border-green rounded-xl m-10"/></div>
+        <div><div className="w-40 h-16 border border-green rounded-xl m-10"/> </div>
+        <div><div className="w-40 h-16 border border-green rounded-xl m-10"/></div>
+        <div><div className="w-40 h-16 border border-green rounded-xl m-10"/></div>
+        <div><div className="w-40 h-16 border border-green rounded-xl m-10"/>   </div>
+        <div><div className="w-40 h-16 border border-green rounded-xl m-10"/> </div>
+        <div><div className="w-40 h-16 border border-green rounded-xl m-10"/></div>
       </div>
       </Container>
       
