@@ -161,7 +161,7 @@ const presentationratings = [
       alt="Credible"
       />
       <div className="text-3xl my-10 text-green">Is your story compelling?</div>
-      <RadioButtonGroup options={presentationratings} field=""/>
+      <RadioButtonGroup options={presentationratings} field="F-Compelling"/>
       <ValidationError prefix="F-Compelling" field="F-Compelling" errors={state.errors} />
 
     </div>
@@ -173,8 +173,8 @@ const presentationratings = [
       alt="Credible"
       />
       <div className="text-3xl my-10 text-green">Is your pitch well-presented and clear?</div>
-      <RadioButtonGroup options={presentationratings} field=""/>
-      <ValidationError prefix="F-Compelling" field="F-Compelling" errors={state.errors} />
+      <RadioButtonGroup options={presentationratings} field="F-Clear"/>
+      <ValidationError prefix="F-Clear" field="F-Clear" errors={state.errors} />
 
     </div>
 
@@ -216,7 +216,7 @@ const presentationratings = [
         <ValidationError prefix="F-Email" field="F-Email" errors={state.errors} />
       </div>
       <div className="">
-        <Input field="text" labelcopy="Phone" placeholder="Phone" /> 
+        <Input field="F-Phone" labelcopy="Phone" placeholder="Phone" /> 
         <ValidationError prefix="F-Phone" field="F-Phone" errors={state.errors} />
       </div>
     </div>

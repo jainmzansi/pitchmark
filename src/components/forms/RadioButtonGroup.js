@@ -15,11 +15,10 @@ const options = props.options;
         <div key={plan.id} className="flex flex-row mr-20">
           <div className="mr-6">
             <input
-              id={plan.id}
-              aria-describedby={`${plan.id}-description`}
-              name="plan"
+              id={field}
+              name={field}
+              value={plan.id}
               type="radio"
-              defaultChecked={plan.id === 'small'}
               className="w-8 h-8 p-2 border-pink border border-black/50 font-light text-pink focus:ring-pink"
             />
           </div>
