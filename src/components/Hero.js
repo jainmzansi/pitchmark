@@ -6,7 +6,7 @@ import Type from "../components/typography/Type"
 
 const Hero = () => (	
 	
-	<div className="bg-pitchmark-blue min-h-content pt-10 pb-20 lg:pb-56">
+	<div className="bg-blue min-h-content pt-10 pb-20 lg:pb-56">
 	<Container>
 	<div className="flex flex-col-reverse lg:flex-row">
 		<div className="w-full lg:w-1/2 2xl:w-2/5">

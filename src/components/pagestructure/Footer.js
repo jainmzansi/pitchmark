@@ -5,7 +5,7 @@ import Button from "../../components/interactive/Button"
 
 const Footer = () => (
   <footer>
-	<div className="bg-pitchmark-blue mt-20">
+	<div className="bg-blue pt-20">
 	<Container>
 		<div className="py-16 pb-24 flex flex-col lg:flex-row">
 			<div className="w-full lg:w-1/3">

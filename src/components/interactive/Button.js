@@ -9,7 +9,7 @@ const url = props.url;
   
 	
 	return (
-		  <a href={url}><button className="bg-pitchmark-pink font-bold py-4 px-8 text-sm rounded-md">{title}</button></a>
+		  <a href={url}><button className="bg-pink font-bold py-4 px-8 text-sm rounded-md">{title}</button></a>
  );
 	
 };

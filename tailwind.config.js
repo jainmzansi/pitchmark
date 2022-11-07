@@ -11,11 +11,27 @@ module.exports = {
       }
     },
     colors: {
-      'pitchmark-blue': '#D7E9F7',
-      'pitchmark-tan': '#F9F3DF',
-      'pitchmark-green': '#488674',
-      'pitchmark-pink': '#F1B8A7',
+      'blue': {
+        DEFAULT: '#D7E9F7'
+      },
+      'tan': {
+        DEFAULT: '#F9F3DF'
+      },
+      'green': {
+        DEFAULT: '#488674'
+      },
+      'pink': {
+        DEFAULT: '#F1B8A7'
+      },
+      'white': {
+        DEFAULT: '#FFFFFF'
+      },
+      'black': {
+        DEFAULT: '#000000'
+      }     
     }
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/forms'),
+  ],
 }

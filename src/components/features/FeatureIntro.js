@@ -12,7 +12,7 @@ const FeatureIntro = () => (
 		
 		
 			{/*  Feature 1*/}
-			<div className="rounded-lg bg-pitchmark-tan p-6 2xl:p-10  text-center">
+			<div className="rounded-lg bg-tan p-6 2xl:p-10  text-center">
 				<img
 					className="mx-auto mb-10"
 					src="https://ik.imagekit.io/pathventures/pitchmark/Pitchmark-PitchReadiness_HBF7zhyzc.svg?ik-sdk-version=javascript-1.4.3&updatedAt=1667451675843"
@@ -30,7 +30,7 @@ const FeatureIntro = () => (
 			
 			
 			{/*  Feature 2*/}
-			<div className="rounded-lg bg-pitchmark-tan p-6 2xl:p-10 text-center">
+			<div className="rounded-lg bg-tan p-6 2xl:p-10 text-center">
 				<img
 					className="mx-auto mb-10"
 					src="https://ik.imagekit.io/pathventures/pitchmark/Pitchmark-StoryWorkshop_zk5EW91bt.svg?ik-sdk-version=javascript-1.4.3&updatedAt=1667451675788"
@@ -48,7 +48,7 @@ const FeatureIntro = () => (
 			
 			
 			{/*  Feature 3*/}
-			<div className="rounded-lg bg-pitchmark-tan p-6 2xl:p-10 text-center">
+			<div className="rounded-lg bg-tan p-6 2xl:p-10 text-center">
 				<img
 					className="mx-auto mb-10"
 					src="https://ik.imagekit.io/pathventures/pitchmark/Pitchmark-DesignRefresh_A_jzqo_w9.svg?ik-sdk-version=javascript-1.4.3&updatedAt=1667451675803"
@@ -67,7 +67,7 @@ const FeatureIntro = () => (
 			
 			
 			{/*  Feature 4*/}
-			<div className="rounded-lg bg-pitchmark-tan p-6 2xl:p-10 text-center">
+			<div className="rounded-lg bg-tan p-6 2xl:p-10 text-center">
 				<img
 					className="mx-auto mb-10"
 					src="https://ik.imagekit.io/pathventures/pitchmark/Pitchmark-PitchPractice_gpZ_CbPF93.svg?ik-sdk-version=javascript-1.4.3&updatedAt=1667451675807"

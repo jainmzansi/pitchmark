@@ -11,7 +11,7 @@ const copy = props.copy;
   
 	
 	return (
-		<div className="w-full xl:w-64 px-6 pt-6 pb-4 bg-pitchmark-tan mb-6 2xl:mb-0 mr-0 lg:mr-6 rounded-lg">
+		<div className="w-full xl:w-64 px-6 pt-6 pb-4 bg-tan mb-6 2xl:mb-0 mr-0 lg:mr-6 rounded-lg">
 		  <img
 		  className="w-6 xl:w-8 mb-4"
 		  src={icon}
