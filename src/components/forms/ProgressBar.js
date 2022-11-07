@@ -33,10 +33,12 @@ graphql`
         {data.ProgressBar.edges.map((edge) => (
         
             <div className={edge.node.data.Title=== current ? "border-t-2 text-black border-black pt-4 text-2xl text-left" : "border-t-2 text-black/25 border-black/25 pt-4 text-2xl text-left"}>            
-              {edge.node.data.Title}
+              <span className="invisible lg:visible">{edge.node.data.Title}</span>
             </div>
         ))}
-          <div className={current === 'Presentation' ? "border-t-2 text-black border-black pt-4 text-2xl text-left" : "border-t-2 text-black/25 border-black/25 pt-4 text-2xl text-left"}>Presentation</div>
+          <div className={current === 'Presentation' ? "border-t-2 text-black border-black pt-4 text-2xl text-left" : "border-t-2 text-black/25 border-black/25 pt-4 text-2xl text-left"}>
+            <span className="invisible lg:visible">Presentation</span>
+          </div>
       </div>
    );
 };  

@@ -79,7 +79,7 @@ const presentationratings = [
 
 <div>
 
-   <div className="w-1/2">
+   <div className="w-full sm:w-2/3 lg:w-1/2">
   <Type type="h1" text="Check your pitch readiness"/>
   <Type type="h2" text="Our pitch readiness checker will help you quickly assess whether your pitch covers they key points investors look for."/>
 </div>
@@ -101,24 +101,24 @@ const presentationratings = [
 
 {edge.node.data.PitchPages.map((array) => (
  <FormBlock>
-   <div className="flex flex-row">
-     <div className="w-1/3">
+   <div className="flex sm:flex-row flex-col">
+     <div className="w-full sm:w-1/3 mr-0 sm:mr-10">
         <img
              className="h-40"
              src={array.data.ImageURL}
              alt={array.data.Title}
              />
      </div>
-     <div className="w-2/3">
+     <div className="w-full sm:w-2/3">
        <div className="text-green h-full flex items-center justify-center">
          <div>
-           <div className="text-3xl mb-5">{array.data.Title}</div>
+           <div className="text-3xl mb-5 mt-5 sm:mt-0">{array.data.Title}</div>
            <Type type="para2" text={array.data.PageDescription} />
          </div>
        </div>
      </div>
    </div>
-   <div className="grid grid-cols-3 gap-10 mt-20 ">
+   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 mt-10 sm:mt-20 ">
     {array.data.InvestorQuestions.map((array) => (
      <CheckBox field="F-Test" labelcopy={array.data.Title} placeholder=""/>
    ))}
@@ -197,7 +197,7 @@ const presentationratings = [
   {/* Contact details*/}
 
 <FormBlock>
-    <div className="grid grid-cols-2 gap-4">
+    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
       <div className="">
         <Input field="F-Org" labelcopy="Organisation" placeholder="Organisation" />
         <ValidationError  prefix="F-Org" field="F-Org" errors={state.errors} />    

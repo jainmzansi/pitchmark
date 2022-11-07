@@ -10,9 +10,9 @@ const options = props.options;
  
   return (
     <fieldset>
-      <div className="flex flex-row">
+      <div className="flex flex-col sm:flex-row">
       {options.map((plan) => (
-        <div key={plan.id} className="flex flex-row mr-20">
+        <div key={plan.id} className="flex flex-row mt-5 sm:mt-5 mr-0 sm:mr-20">
           <div className="mr-6">
             <input
               id={field}
