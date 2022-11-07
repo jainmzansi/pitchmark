@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useStaticQuery, graphql } from "gatsby";
 import { useForm, ValidationError } from "@formspree/react";
 import Required from "../../components/forms/Required"
 import TextArea from "../../components/forms/TextArea"
@@ -8,18 +9,66 @@ import GraphicRadioButton from "../../components/forms/GraphicRadioButton"
 import CheckBox from "../../components/forms/CheckBox"
 import Type from "../../components/typography/Type"
 import FormBlock from "../../components/forms/FormBlock"
+import ProgressBar from "../../components/forms/ProgressBar"
+import RadioButtonGroup from "../../components/forms/RadioButtonGroup"
+import Button from "../../components/interactive/Button"
+
 
 export default function PitchReadinessForm() {
+  
+  const data = useStaticQuery (
+    graphql`
+      query PitchSectionsQuery {
+        PitchSections: allAirtable (
+           filter:  { table: { eq: "PitchSections" } }
+           sort: {fields: data___MajorOrder, order: ASC}
+         )
+        {
+          edges {
+            node {
+              recordId
+              data {
+                Title
+                PitchPages {
+                   recordId
+                   data {
+                     Title
+                     ImageURL
+                     PageDescription
+                     InvestorQuestions {
+                        recordId
+                        data {
+                          Title
+                        }
+                      }
+                   }
+                 }
+              }
+            }
+          }
+        }
+      }
+    `);
+
+  const [state, handleSubmit] = useForm("xqkjwaeb");
 
 
-  const [state, handleSubmit] = useForm("mwkyjwkv");
+const presentationratings = [
+    { id: '1', name: 'Not at all' },
+    { id: '2', name: 'Some' },
+    { id: '3', name: 'Very' },
+  ]
+  
+
 
   if (state.succeeded) {
         
     return (
       <div>
-      <h2 className="text-3xl mb-7">Thanks for getting in touch!</h2>
-      <p  className="mb-16">Your Pitch Readiness is ...</p>
+        <Type type="h1" text="We've received your assessment"/>
+        <Type type="para1" text="We'll be in touch soon to share your completed Pitch Readiness report."/>
+        <Type type="para1" text="Get in touch if you can't wait to improve your pitch."/>
+        <div className="mt-5"><Button url="" title="Talk to us"/></div>
       </div>
     );
   }
@@ -27,529 +76,107 @@ export default function PitchReadinessForm() {
   return (
 
 
+
+<div>
+
+   <div className="w-1/2">
+  <Type type="h1" text="Check your pitch readiness"/>
+  <Type type="h2" text="Our pitch readiness checker will help you quickly assess whether your pitch covers they key points investors look for."/>
+</div>
+
+
 <form onSubmit={handleSubmit}>
 
 
 {/* Validation errors  */}
 <div className="w-full sm:w-2/3">
-<ValidationError className="bg-orange-light w-full text-orange p-3 rounded-xl mb-7" errors={state.errors} />
+<ValidationError className="bg-pink w-full text-pink p-3 rounded-xl mb-7" errors={state.errors} />
 <input type="text" name="_gotcha" className="hidden" />
 </div>
 
-{/* Progress bar  */}
-<div className="grid grid-cols-6 gap-10 mt-16">
-  <div className="border-t-2 pt-4 text-2xl text-left">Opportunity</div>
-  <div className="border-t-2 text-black/25 border-black/25 pt-4 text-2xl text-left">Market</div>
-  <div className="border-t-2 text-black/25 border-black/25 pt-4 text-2xl text-left">Business</div>
-  <div className="border-t-2 text-black/25 border-black/25 pt-4 text-2xl text-left">Strengths</div>
-  <div className="border-t-2 text-black/25 border-black/25 pt-4 text-2xl text-left">Ask</div>
-  <div className="border-t-2 text-black/25 border-black/25 pt-4 text-2xl text-left">Presentation</div>
+
+ {data.PitchSections.edges.map((edge) => (
+<div>
+ <ProgressBar current={edge.node.data.Title}/>
+
+{edge.node.data.PitchPages.map((array) => (
+ <FormBlock>
+   <div className="flex flex-row">
+     <div className="w-1/3">
+        <img
+             className="h-40"
+             src={array.data.ImageURL}
+             alt={array.data.Title}
+             />
+     </div>
+     <div className="w-2/3">
+       <div className="text-green h-full flex items-center justify-center">
+         <div>
+           <div className="text-3xl mb-5">{array.data.Title}</div>
+           <Type type="para2" text={array.data.PageDescription} />
+         </div>
+       </div>
+     </div>
+   </div>
+   <div className="grid grid-cols-3 gap-10 mt-20 ">
+    {array.data.InvestorQuestions.map((array) => (
+     <CheckBox field="F-Test" labelcopy={array.data.Title} placeholder=""/>
+   ))}
+   </div>
+   <div>
+   {array.data.InvestorQuestions.map((array) => (
+      <ValidationError prefix="F-Test" field="F-Test" errors={state.errors} />
+    ))}
+   </div>
+ </FormBlock>
+
+))}
 </div>
 
-{/* Problem  */}
+))}
+
+
+<ProgressBar current="Presentation"/>
+
+
+
 <FormBlock>
-  <div className="flex flex-row">
-    <div className="w-1/3">
+
+    <div className="">
       <img
-      className="h-40"
-      src="https://ik.imagekit.io/pathventures/pitchmark/Problem.svg"
-      alt="Problem"
+      className="h-14"
+      src="https://ik.imagekit.io/pathventures/pitchmark/Credible.svg"
+      alt="Credible"
       />
-    </div>
-    <div className="w-2/3">
-      <div className="text-green h-full flex items-center justify-center">
-        <div>
-          <div className="text-3xl mb-5">Problem</div>
-          <Type type="para2" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip." />
-        </div>
-      </div>
-    </div>
-  </div>
-  
-  <div className="grid grid-cols-2 gap-10 mt-20">
-    <CheckBox field="F-CustomerNeed" labelcopy="Shown evidence of customer need" placeholder=""/>
-    <CheckBox field="F-ClearProblem" labelcopy="Communicated the problem clearly" placeholder=""/>
-    <CheckBox field="F-CompetitiveAdvantage" labelcopy="Defined your competitive advantage" placeholder=""/>
-  </div>
-  <div>
-    <ValidationError prefix="CustomerNeed" field="CustomerNeed" errors={state.errors} />
-    <ValidationError prefix="F-ClearProblem" field="F-ClearProblem" errors={state.errors} />
-    <ValidationError prefix="F-CompetitiveAdvantage" field="F-CompetitiveAdvantage" errors={state.errors} />
-  </div>
-</FormBlock>
+      <div className="text-3xl my-10 text-green">Are your assumptions and data credible?</div>
+      <RadioButtonGroup options={presentationratings} field="F-Credible"/>
+      <ValidationError prefix="F-Credible" field="F-Credible" errors={state.errors} />
 
+    </div>
 
-{/* Solution  */}
-<FormBlock>
-  <div className="flex flex-row">
-    <div className="w-1/3">
+    <div className="mt-24">
       <img
-      className="h-40"
-      src="https://ik.imagekit.io/pathventures/pitchmark/Solution.svg"
-      alt="Solution"
+      className="h-14"
+      src="https://ik.imagekit.io/pathventures/pitchmark/Compelling.svg"
+      alt="Credible"
       />
+      <div className="text-3xl my-10 text-green">Is your story compelling?</div>
+      <RadioButtonGroup options={presentationratings} field=""/>
+      <ValidationError prefix="F-Compelling" field="F-Compelling" errors={state.errors} />
+
     </div>
-    <div className="w-2/3">
-      <div className="text-green h-full flex items-center justify-center">
-        <div>
-          <div className="text-3xl mb-5">Solution</div>
-          <Type type="para2" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip." />
-        </div>
-      </div>
-    </div>
-  </div>
-  
-  <div className="grid grid-cols-2 gap-10 mt-20">
-    <CheckBox field="F-CustomerNeed" labelcopy="Shown evidence of customer need" placeholder=""/>
-    <CheckBox field="F-ClearProblem" labelcopy="Communicated the problem clearly" placeholder=""/>
-    <CheckBox field="F-CompetitiveAdvantage" labelcopy="Defined your competitive advantage" placeholder=""/>
-  </div>
-  <div>
-    <ValidationError prefix="CustomerNeed" field="CustomerNeed" errors={state.errors} />
-    <ValidationError prefix="F-ClearProblem" field="F-ClearProblem" errors={state.errors} />
-    <ValidationError prefix="F-CompetitiveAdvantage" field="F-CompetitiveAdvantage" errors={state.errors} />
-  </div>
-</FormBlock>
 
-
-
-{/* Product  */}
-<FormBlock>
-  <div className="flex flex-row">
-    <div className="w-1/3">
+    <div className="mt-24">
       <img
-      className="h-40"
-      src="https://ik.imagekit.io/pathventures/pitchmark/Product.svg"
-      alt="Product"
+      className="h-14 mt-24"
+      src="https://ik.imagekit.io/pathventures/pitchmark/Clear.svg"
+      alt="Credible"
       />
+      <div className="text-3xl my-10 text-green">Is your pitch well-presented and clear?</div>
+      <RadioButtonGroup options={presentationratings} field=""/>
+      <ValidationError prefix="F-Compelling" field="F-Compelling" errors={state.errors} />
+
     </div>
-    <div className="w-2/3">
-      <div className="text-green h-full flex items-center justify-center">
-        <div>
-          <div className="text-3xl mb-5">Product</div>
-          <Type type="para2" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip." />
-        </div>
-      </div>
-    </div>
-  </div>
-  
-  <div className="grid grid-cols-2 gap-10 mt-20">
-    <CheckBox field="F-CustomerNeed" labelcopy="Shown evidence of customer need" placeholder=""/>
-    <CheckBox field="F-ClearProblem" labelcopy="Communicated the problem clearly" placeholder=""/>
-    <CheckBox field="F-CompetitiveAdvantage" labelcopy="Defined your competitive advantage" placeholder=""/>
-  </div>
-  <div>
-    <ValidationError prefix="CustomerNeed" field="CustomerNeed" errors={state.errors} />
-    <ValidationError prefix="F-ClearProblem" field="F-ClearProblem" errors={state.errors} />
-    <ValidationError prefix="F-CompetitiveAdvantage" field="F-CompetitiveAdvantage" errors={state.errors} />
-  </div>
-</FormBlock>
-
-
-{/* Why now?  */}
-<FormBlock>
-  <div className="flex flex-row">
-    <div className="w-1/3">
-      <img
-      className="h-40"
-      src="https://ik.imagekit.io/pathventures/pitchmark/WhyNow.svg"
-      alt="WhyNow"
-      />
-    </div>
-    <div className="w-2/3">
-      <div className="text-green h-full flex items-center justify-center">
-        <div>
-          <div className="text-3xl mb-5">Why now?</div>
-          <Type type="para2" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip." />
-        </div>
-      </div>
-    </div>
-  </div>
-  
-  <div className="grid grid-cols-2 gap-10 mt-20">
-    <CheckBox field="F-CustomerNeed" labelcopy="Shown evidence of customer need" placeholder=""/>
-    <CheckBox field="F-ClearProblem" labelcopy="Communicated the problem clearly" placeholder=""/>
-    <CheckBox field="F-CompetitiveAdvantage" labelcopy="Defined your competitive advantage" placeholder=""/>
-  </div>
-  <div>
-    <ValidationError prefix="CustomerNeed" field="CustomerNeed" errors={state.errors} />
-    <ValidationError prefix="F-ClearProblem" field="F-ClearProblem" errors={state.errors} />
-    <ValidationError prefix="F-CompetitiveAdvantage" field="F-CompetitiveAdvantage" errors={state.errors} />
-  </div>
-</FormBlock>
-
-
-{/* Progress bar  */}
-<div className="grid grid-cols-6 gap-10 mt-16">
-  <div className="border-t-2 pt-4 border-black/50 text-black/50 text-2xl text-left">Opportunity</div>
-  <div className="border-t-2 pt-4 text-2xl text-left">Market</div>
-  <div className="border-t-2 text-black/25 border-black/25 pt-4 text-2xl text-left">Business</div>
-  <div className="border-t-2 text-black/25 border-black/25 pt-4 text-2xl text-left">Strengths</div>
-  <div className="border-t-2 text-black/25 border-black/25 pt-4 text-2xl text-left">Ask</div>
-  <div className="border-t-2 text-black/25 border-black/25 pt-4 text-2xl text-left">Presentation</div>
-
-</div>
-
-
-
-
-{/* Why now?  */}
-<FormBlock>
-  <div className="flex flex-row">
-    <div className="w-1/3">
-      <img
-      className="h-40"
-      src="https://ik.imagekit.io/pathventures/pitchmark/MarketSize.svg"
-      alt="Market size"
-      />
-    </div>
-    <div className="w-2/3">
-      <div className="text-green h-full flex items-center justify-center">
-        <div>
-          <div className="text-3xl mb-5">Market size</div>
-          <Type type="para2" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip." />
-        </div>
-      </div>
-    </div>
-  </div>
-  
-  <div className="grid grid-cols-2 gap-10 mt-20">
-    <CheckBox field="F-CustomerNeed" labelcopy="Shown evidence of customer need" placeholder=""/>
-    <CheckBox field="F-ClearProblem" labelcopy="Communicated the problem clearly" placeholder=""/>
-    <CheckBox field="F-CompetitiveAdvantage" labelcopy="Defined your competitive advantage" placeholder=""/>
-  </div>
-  <div>
-    <ValidationError prefix="CustomerNeed" field="CustomerNeed" errors={state.errors} />
-    <ValidationError prefix="F-ClearProblem" field="F-ClearProblem" errors={state.errors} />
-    <ValidationError prefix="F-CompetitiveAdvantage" field="F-CompetitiveAdvantage" errors={state.errors} />
-  </div>
-</FormBlock>
-
-
-{/* Competitors  */}
-<FormBlock>
-  <div className="flex flex-row">
-    <div className="w-1/3">
-      <img
-      className="h-40"
-      src="https://ik.imagekit.io/pathventures/pitchmark/Competitors.svg"
-      alt="Competitors"
-      />
-    </div>
-    <div className="w-2/3">
-      <div className="text-green h-full flex items-center justify-center">
-        <div>
-          <div className="text-3xl mb-5">Competitors</div>
-          <Type type="para2" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip." />
-        </div>
-      </div>
-    </div>
-  </div>
-  
-  <div className="grid grid-cols-2 gap-10 mt-20">
-    <CheckBox field="F-CustomerNeed" labelcopy="Shown evidence of customer need" placeholder=""/>
-    <CheckBox field="F-ClearProblem" labelcopy="Communicated the problem clearly" placeholder=""/>
-    <CheckBox field="F-CompetitiveAdvantage" labelcopy="Defined your competitive advantage" placeholder=""/>
-  </div>
-  <div>
-    <ValidationError prefix="CustomerNeed" field="CustomerNeed" errors={state.errors} />
-    <ValidationError prefix="F-ClearProblem" field="F-ClearProblem" errors={state.errors} />
-    <ValidationError prefix="F-CompetitiveAdvantage" field="F-CompetitiveAdvantage" errors={state.errors} />
-  </div>
-</FormBlock>
-
-
-
-
-{/* Progress bar  */}
-<div className="grid grid-cols-6 gap-10 mt-16">
-  <div className="border-t-2 pt-4 border-black/50 text-black/50 text-2xl text-left">Opportunity</div>
-  <div className="border-t-2 pt-4 border-black/50 text-black/50 text-2xl text-left">Market</div>
-  <div className="border-t-2 pt-4 text-2xl text-left">Business</div>
-  <div className="border-t-2 text-black/25 border-black/25 pt-4 text-2xl text-left">Strengths</div>
-  <div className="border-t-2 text-black/25 border-black/25 pt-4 text-2xl text-left">Ask</div>
-  <div className="border-t-2 text-black/25 border-black/25 pt-4 text-2xl text-left">Presentation</div>
-
-</div>
-
-
-
-{/* BusinessModel  */}
-<FormBlock>
-  <div className="flex flex-row">
-    <div className="w-1/3">
-      <img
-      className="h-40"
-      src="https://ik.imagekit.io/pathventures/pitchmark/BusinessModel.svg"
-      alt="Business Model"
-      />
-    </div>
-    <div className="w-2/3">
-      <div className="text-green h-full flex items-center justify-center">
-        <div>
-          <div className="text-3xl mb-5">Business Model</div>
-          <Type type="para2" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip." />
-        </div>
-      </div>
-    </div>
-  </div>
-  
-  <div className="grid grid-cols-2 gap-10 mt-20">
-    <CheckBox field="F-CustomerNeed" labelcopy="Shown evidence of customer need" placeholder=""/>
-    <CheckBox field="F-ClearProblem" labelcopy="Communicated the problem clearly" placeholder=""/>
-    <CheckBox field="F-CompetitiveAdvantage" labelcopy="Defined your competitive advantage" placeholder=""/>
-  </div>
-  <div>
-    <ValidationError prefix="CustomerNeed" field="CustomerNeed" errors={state.errors} />
-    <ValidationError prefix="F-ClearProblem" field="F-ClearProblem" errors={state.errors} />
-    <ValidationError prefix="F-CompetitiveAdvantage" field="F-CompetitiveAdvantage" errors={state.errors} />
-  </div>
-</FormBlock>
-
-
-
-{/* Go-To-Market  */}
-<FormBlock>
-  <div className="flex flex-row">
-    <div className="w-1/3">
-      <img
-      className="h-40"
-      src="https://ik.imagekit.io/pathventures/pitchmark/GoToMarket.svg"
-      alt="Go-To-Market"
-      />
-    </div>
-    <div className="w-2/3">
-      <div className="text-green h-full flex items-center justify-center">
-        <div>
-          <div className="text-3xl mb-5">Go-To-Market</div>
-          <Type type="para2" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip." />
-        </div>
-      </div>
-    </div>
-  </div>
-  
-  <div className="grid grid-cols-2 gap-10 mt-20">
-    <CheckBox field="F-CustomerNeed" labelcopy="Shown evidence of customer need" placeholder=""/>
-    <CheckBox field="F-ClearProblem" labelcopy="Communicated the problem clearly" placeholder=""/>
-    <CheckBox field="F-CompetitiveAdvantage" labelcopy="Defined your competitive advantage" placeholder=""/>
-  </div>
-  <div>
-    <ValidationError prefix="CustomerNeed" field="CustomerNeed" errors={state.errors} />
-    <ValidationError prefix="F-ClearProblem" field="F-ClearProblem" errors={state.errors} />
-    <ValidationError prefix="F-CompetitiveAdvantage" field="F-CompetitiveAdvantage" errors={state.errors} />
-  </div>
-</FormBlock>
-
-
-{/* Financials  */}
-<FormBlock>
-  <div className="flex flex-row">
-    <div className="w-1/3">
-      <img
-      className="h-40"
-      src="https://ik.imagekit.io/pathventures/pitchmark/Financials.svg"
-      alt="Financials"
-      />
-    </div>
-    <div className="w-2/3">
-      <div className="text-green h-full flex items-center justify-center">
-        <div>
-          <div className="text-3xl mb-5">Financials</div>
-          <Type type="para2" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip." />
-        </div>
-      </div>
-    </div>
-  </div>
-  
-  <div className="grid grid-cols-2 gap-10 mt-20">
-    <CheckBox field="F-CustomerNeed" labelcopy="Shown evidence of customer need" placeholder=""/>
-    <CheckBox field="F-ClearProblem" labelcopy="Communicated the problem clearly" placeholder=""/>
-    <CheckBox field="F-CompetitiveAdvantage" labelcopy="Defined your competitive advantage" placeholder=""/>
-  </div>
-  <div>
-    <ValidationError prefix="CustomerNeed" field="CustomerNeed" errors={state.errors} />
-    <ValidationError prefix="F-ClearProblem" field="F-ClearProblem" errors={state.errors} />
-    <ValidationError prefix="F-CompetitiveAdvantage" field="F-CompetitiveAdvantage" errors={state.errors} />
-  </div>
-</FormBlock>
-
-
-
-{/* Progress bar  */}
-<div className="grid grid-cols-6 gap-10 mt-16">
-  <div className="border-t-2 pt-4 border-black/50 text-black/50 text-2xl text-left">Opportunity</div>
-  <div className="border-t-2 pt-4 border-black/50 text-black/50 text-2xl text-left">Market</div>
-  <div className="border-t-2 pt-4  border-black/50 text-black/50 text-2xl text-left">Business</div>
-  <div className="border-t-2  pt-4 text-2xl text-left">Strengths</div>
-  <div className="border-t-2 text-black/25 border-black/25 pt-4 text-2xl text-left">Ask</div>
-  <div className="border-t-2 text-black/25 border-black/25 pt-4 text-2xl text-left">Presentation</div>
-
-</div>
-
-
-{/* Team  */}
-<FormBlock>
-  <div className="flex flex-row">
-    <div className="w-1/3">
-      <img
-      className="h-40"
-      src="https://ik.imagekit.io/pathventures/pitchmark/Team.svg"
-      alt="Team"
-      />
-    </div>
-    <div className="w-2/3">
-      <div className="text-green h-full flex items-center justify-center">
-        <div>
-          <div className="text-3xl mb-5">Team</div>
-          <Type type="para2" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip." />
-        </div>
-      </div>
-    </div>
-  </div>
-  
-  <div className="grid grid-cols-2 gap-10 mt-20">
-    <CheckBox field="F-CustomerNeed" labelcopy="Shown evidence of customer need" placeholder=""/>
-    <CheckBox field="F-ClearProblem" labelcopy="Communicated the problem clearly" placeholder=""/>
-    <CheckBox field="F-CompetitiveAdvantage" labelcopy="Defined your competitive advantage" placeholder=""/>
-  </div>
-  <div>
-    <ValidationError prefix="CustomerNeed" field="CustomerNeed" errors={state.errors} />
-    <ValidationError prefix="F-ClearProblem" field="F-ClearProblem" errors={state.errors} />
-    <ValidationError prefix="F-CompetitiveAdvantage" field="F-CompetitiveAdvantage" errors={state.errors} />
-  </div>
-</FormBlock>
-
-
-{/* Traction  */}
-<FormBlock>
-  <div className="flex flex-row">
-    <div className="w-1/3">
-      <img
-      className="h-40"
-      src="https://ik.imagekit.io/pathventures/pitchmark/Traction.svg"
-      alt="Traction"
-      />
-    </div>
-    <div className="w-2/3">
-      <div className="text-green h-full flex items-center justify-center">
-        <div>
-          <div className="text-3xl mb-5">Traction</div>
-          <Type type="para2" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip." />
-        </div>
-      </div>
-    </div>
-  </div>
-  
-  <div className="grid grid-cols-2 gap-10 mt-20">
-    <CheckBox field="F-CustomerNeed" labelcopy="Shown evidence of customer need" placeholder=""/>
-    <CheckBox field="F-ClearProblem" labelcopy="Communicated the problem clearly" placeholder=""/>
-    <CheckBox field="F-CompetitiveAdvantage" labelcopy="Defined your competitive advantage" placeholder=""/>
-  </div>
-  <div>
-    <ValidationError prefix="CustomerNeed" field="CustomerNeed" errors={state.errors} />
-    <ValidationError prefix="F-ClearProblem" field="F-ClearProblem" errors={state.errors} />
-    <ValidationError prefix="F-CompetitiveAdvantage" field="F-CompetitiveAdvantage" errors={state.errors} />
-  </div>
-</FormBlock>
-
-
-
-{/* Progress bar  */}
-<div className="grid grid-cols-6 gap-10 mt-16">
-  <div className="border-t-2 pt-4 border-black/50 text-black/50 text-2xl text-left">Opportunity</div>
-  <div className="border-t-2 pt-4 border-black/50 text-black/50 text-2xl text-left">Market</div>
-  <div className="border-t-2 pt-4  border-black/50 text-black/50 text-2xl text-left">Business</div>
-  <div className="border-t-2 border-black/50 text-black/50  pt-4 text-2xl text-left">Strengths</div>
-  <div className="border-t-2  pt-4 text-2xl text-left">Ask</div>
-  <div className="border-t-2 text-black/25 border-black/25 pt-4 text-2xl text-left">Presentation</div>
-
-</div>
-
-{/* The Ask  */}
-<FormBlock>
-  <div className="flex flex-row">
-    <div className="w-1/3">
-      <img
-      className="h-40"
-      src="https://ik.imagekit.io/pathventures/pitchmark/TheAsk.svg"
-      alt="The Ask"
-      />
-    </div>
-    <div className="w-2/3">
-      <div className="text-green h-full flex items-center justify-center">
-        <div>
-          <div className="text-3xl mb-5">The Ask</div>
-          <Type type="para2" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip." />
-        </div>
-      </div>
-    </div>
-  </div>
-  
-  <div className="grid grid-cols-2 gap-10 mt-20">
-    <CheckBox field="F-CustomerNeed" labelcopy="Shown evidence of customer need" placeholder=""/>
-    <CheckBox field="F-ClearProblem" labelcopy="Communicated the problem clearly" placeholder=""/>
-    <CheckBox field="F-CompetitiveAdvantage" labelcopy="Defined your competitive advantage" placeholder=""/>
-  </div>
-  <div>
-    <ValidationError prefix="CustomerNeed" field="CustomerNeed" errors={state.errors} />
-    <ValidationError prefix="F-ClearProblem" field="F-ClearProblem" errors={state.errors} />
-    <ValidationError prefix="F-CompetitiveAdvantage" field="F-CompetitiveAdvantage" errors={state.errors} />
-  </div>
-</FormBlock>
-
-
-{/* Progress bar  */}
-<div className="grid grid-cols-6 gap-10 mt-16">
-  <div className="border-t-2 pt-4 border-black/50 text-black/50 text-2xl text-left">Opportunity</div>
-  <div className="border-t-2 pt-4 border-black/50 text-black/50 text-2xl text-left">Market</div>
-  <div className="border-t-2 pt-4  border-black/50 text-black/50 text-2xl text-left">Business</div>
-  <div className="border-t-2 border-black/50 text-black/50  pt-4 text-2xl text-left">Strengths</div>
-  <div className="border-t-2  border-black/50 text-black/50   pt-4 text-2xl text-left">Ask</div>
-  <div className="border-t-2  pt-4 text-2xl text-left">Presentation</div>
-</div>
-
-
-<FormBlock>
-
-<img
-className="h-14"
-src="https://ik.imagekit.io/pathventures/pitchmark/Credible.svg"
-alt="Credible"
-/>
-<div className="text-3xl my-10 text-green">Are your assumptions and data credible?</div>
-
-<div className="flex flex-row">
- 
- <GraphicRadioButton line1="Not at all"/>
- <GraphicRadioButton line1="Some"/>
- <GraphicRadioButton line1="Very"/>
-</div>
-
-<img
-className="h-14 mt-24"
-src="https://ik.imagekit.io/pathventures/pitchmark/Compelling.svg"
-alt="Compelling"
-/>
-<div className="text-3xl my-10 text-green">Is your story compelling?</div>
-<div className="flex flex-row">
- 
- <GraphicRadioButton line1="Not at all"/>
- <GraphicRadioButton line1="Some"/>
- <GraphicRadioButton line1="Very!"/>
-</div>
-
-<img
-className="h-14  mt-24"
-src="https://ik.imagekit.io/pathventures/pitchmark/Clear.svg"
-alt="Clear"
-/>
-<div className="text-3xl my-10 text-green">Is your pitch presented clearly and creatively?</div>
-<div className="flex flex-row">
- 
- <GraphicRadioButton line1="Not at all"/>
- <GraphicRadioButton line1="Some"/>
- <GraphicRadioButton line1="Very!"/>
-</div>
 
 
 </FormBlock>
@@ -604,5 +231,6 @@ alt="Clear"
       </div>
       
     </form>
+    </div>
   );
 }

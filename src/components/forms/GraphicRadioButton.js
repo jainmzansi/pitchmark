@@ -11,9 +11,9 @@ const icon = props.icon;
 
   return (
     <div>
-      <button className="border text-lg py-4 px-16 mr-4 rounded-md bg-white hover:bg-pink">
-        <span className="font-light">{line1}</span><br/>
-        <span className="font-light">{line2}</span>
+      <button className="border text-lg py-4 px-16 mr-4 rounded-md font-light hover:border-white bg-white hover:bg-pink">
+        <span className="">{line1}</span><br/>
+        <span className="">{line2}</span>
       </button>
     </div>
   )

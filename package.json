@@ -15,8 +15,13 @@
   },
   "dependencies": {
     "@formspree/react": "^2.4.1",
+    "@headlessui/react": "^1.7.4",
+    "@heroicons/react": "^2.0.13",
     "@tailwindcss/forms": "^0.5.3",
+    "dotenv": "^16.0.3",
     "gatsby": "^4.24.6",
+    "gatsby-source-airtable": "^2.3.0",
+    "gatsby-source-filesystem": "^4.24.0",
     "react": "^18.1.0",
     "react-dom": "^18.1.0"
   },

@@ -11,14 +11,14 @@ const labelcopy = props.labelcopy;
 
  
   return (
-  <div className="flex flex-row-reverse">
-    <div className="w-5/6">
-      <div className="h-full items-center items-center  flex ">
+  <div className="flex flex-row">
+    <div className="mr-8">
+        <input type="checkbox" className="w-8 h-8 rounded-lg p-2 border-black/50 border font-light text-pink focus:ring-pink"  id={field} name={field} />  
+    </div>
+    <div className="">
+      <div className="">
         <label htmlFor={field} className="font-light">{labelcopy}</label>
       </div>
-    </div>
-    <div className="w-1/6 ">
-        <input  type="checkbox" className="w-8 h-8 rounded-lg p-2 border-pink border-2 font-light text-green"  id={field} name={field} />  
     </div>
   </div>   
    
