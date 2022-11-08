@@ -39,6 +39,7 @@ export default function PitchReadinessForm() {
                         recordId
                         data {
                           Title
+                          FieldName
                         }
                       }
                    }
@@ -120,7 +121,7 @@ const presentationratings = [
    </div>
    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 mt-10 sm:mt-20 ">
     {array.data.InvestorQuestions.map((array) => (
-     <CheckBox field={array.data.FieldName} labelcopy={array.data.Title} placeholder=""/>
+   <CheckBox field={array.data.FieldName} labelcopy={array.data.Title} placeholder=""/>
    ))}
    </div>
    <div>
