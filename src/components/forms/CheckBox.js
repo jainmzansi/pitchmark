@@ -16,9 +16,7 @@ const labelcopy = props.labelcopy;
         <input type="checkbox" className="w-8 h-8 rounded-lg p-2 border-black/50 border font-light text-pink focus:ring-pink"  id={field} name={field} value="1" />  
     </div>
     <div className="">
-      <div className="">
         <label htmlFor={field} className="font-light">{labelcopy}</label>
-      </div>
     </div>
   </div>   
    
