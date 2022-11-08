@@ -120,12 +120,12 @@ const presentationratings = [
    </div>
    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 mt-10 sm:mt-20 ">
     {array.data.InvestorQuestions.map((array) => (
-     <CheckBox field="F-Test" labelcopy={array.data.Title} placeholder=""/>
+     <CheckBox field={array.data.FieldName} labelcopy={array.data.Title} placeholder=""/>
    ))}
    </div>
    <div>
    {array.data.InvestorQuestions.map((array) => (
-      <ValidationError prefix="F-Test" field="F-Test" errors={state.errors} />
+      <ValidationError prefix={array.data.FieldName} field={array.data.FieldName} errors={state.errors} />
     ))}
    </div>
  </FormBlock>
