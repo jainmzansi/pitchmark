@@ -66,8 +66,8 @@ const presentationratings = [
         
     return (
       <div>
-        <Type type="h1" text="We've received your assessment"/>
-        <Type type="para1" text="We'll be in touch soon to share your completed Pitch Readiness report."/>
+        <Type type="h1" text="What's next?"/>
+        <Type type="para1" text="We'll be in touch soon to discuss your pitch readiness."/>
         <Type type="para1" text="Get in touch if you can't wait to improve your pitch."/>
         <div className="mt-5"><Button url="" title="Talk to us"/></div>
       </div>
@@ -81,8 +81,9 @@ const presentationratings = [
 <div>
 
    <div className="w-full sm:w-2/3 lg:w-1/2">
-  <Type type="h1" text="Check your pitch readiness"/>
-  <Type type="h2" text="Our pitch readiness checker will help you quickly assess whether your pitch covers they key points investors look for."/>
+  <Type type="h1" text="Is your pitch ready?"/>
+  <Type type="h2" text="Our pitch readiness checker helps you compare your pitch against the contents of a typical seed round pitch deck."/>
+  <Type type="h2" text="Reflect on what's included in your pitch deck and then answer the following questions. We'll provide you with a readiness rating for your pitch."/>
 </div>
 
 
