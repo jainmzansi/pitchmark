@@ -230,6 +230,9 @@ const IndexPage = () => {
         </Container>      
       </div>  
       
+      
+      {/*  Logos  
+            
       <Container>
       <div className="grid grid-cols-2 lg:grid-cols-5 gaps-8">
         <div><div className="w-40 h-16 border border-green rounded-xl m-10"/></div>
@@ -249,6 +252,8 @@ const IndexPage = () => {
         <div><div className="w-40 h-16 border border-green rounded-xl m-10"/></div>
       </div>
       </Container>
+      
+      */}
       
     </Layout>
   )
