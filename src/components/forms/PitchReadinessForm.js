@@ -69,7 +69,7 @@ const presentationratings = [
         <Type type="h1" text="What's next?"/>
         <Type type="para1" text="We'll be in touch soon to discuss your pitch readiness."/>
         <Type type="para1" text="Get in touch if you can't wait to improve your pitch."/>
-        <div className="mt-5"><Button url="" title="Talk to us"/></div>
+        <div className="mt-5"><Button url="https://calendly.com/pitchmark" title="Schedule your Pitch Readiness workshop"/></div>
       </div>
     );
   }
