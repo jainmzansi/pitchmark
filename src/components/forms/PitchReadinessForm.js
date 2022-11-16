@@ -69,10 +69,12 @@ const presentationratings = [
         <Type type="h1" text="What's next?"/>
         <Type type="para1" text="Schedule your Pitch Readiness Workshop so we can compare your results against best practices."/>    
         <Type type="para2" text="You'll walk away with an idea of your overall pitch readiness including:"/>
-        <Type type="para2" text="Where your current pitch deck is at, page by page."/>
-        <Type type="para2" text="The top three areas you should work on."/>
-        <Type type="para2" text="Feedback on why you should address certain areas"/>
-        <div className="mt-5"><Button url="https://calendly.com/pitchmark/workshop" title="Schedule your workshop"/></div>
+        <ul className="list-disc">
+          <li className="pl-12"><Type type="para2" text="Where your current pitch deck is at, page by page."/></li>
+          <li className="pl-12"><Type type="para2" text="The top three areas you should work on."/></li>
+          <li className="pl-12"<Type type="para2" text="Feedback on why you should address certain areas"/></li>
+        </ul>
+        <div className="mt-12"><Button url="https://calendly.com/pitchmark/workshop" title="Schedule your workshop"/></div>
       </div>
     );
   }
