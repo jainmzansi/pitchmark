@@ -61,13 +61,6 @@ const presentationratings = [
   ]
   
 
-During this time we will compare your results against best practices.
-  You'll walk away with an idea of your overall pitch readiness including:
-  What your score was across each section.
-  How your current pItch deck fairs page by page.
-  The top three areas you should work on
-
-
 
   if (state.succeeded) {
         
