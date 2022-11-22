@@ -72,7 +72,7 @@ const presentationratings = [
         <ul className="list-disc">
           <li className="pl-12"><Type type="para2" text="Where your current pitch deck is at, page by page."/></li>
           <li className="pl-12"><Type type="para2" text="The top three areas you should work on."/></li>
-          <li className="pl-12"<Type type="para2" text="Feedback on why you should address certain areas"/></li>
+          <li className="pl-12"><Type type="para2" text="Feedback on why you should address certain areas"/></li>
         </ul>
         <div className="mt-12"><Button url="https://calendly.com/pitchmark/workshop" title="Schedule your workshop"/></div>
       </div>
@@ -185,19 +185,31 @@ const presentationratings = [
 
     </div>
 
-
+    <div className="mt-24">
+        <label htmlFor="F-PitchFile" className="text-3xl my-10 text-green block">Share your Pitch  <Required /></label>
+        
+        <div class="">
+            <label class="px-8 py-4 bg-white font-light text-black rounded-lg border border-pink hover:bg-pink hover:text-white cursor-pointer mb-20">
+                <input type='file'  name="F-PitchFile" required accept="file/pdf" />
+            </label>
+        </div>
+        
+        
+        <ValidationError prefix="F-PitchFile" field="F-PitchFile" errors={state.errors} />
+    </div>
 </FormBlock>
 
 
 {/* Progress bar  */}
 <div className="mt-16 flex flex-row">
   <div className="mx-auto pt-4 text-3xl text-left">
-  <img
-  className="h-14 mb-10"
-  src="https://ik.imagekit.io/pathventures/pitchmark/ResultsBlack.svg"
-  alt="Results"
-  />
-  Where should we send your results?</div>
+    <img
+    className="h-14 mb-10"
+    src="https://ik.imagekit.io/pathventures/pitchmark/ResultsBlack.svg"
+    alt="Results"
+    />
+    <div className="text-3xl my-10 text-green">Where should we send your results?</div>
+  </div>
 </div>
 
 
