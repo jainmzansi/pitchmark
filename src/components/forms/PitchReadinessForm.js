@@ -189,7 +189,7 @@ const presentationratings = [
         <label htmlFor="F-PitchFile" className="text-3xl my-10 text-green block">Share your Pitch  <Required /></label>
         
         <div class="">
-            <label class="px-8 py-4 bg-white font-light text-black rounded-lg border border-pink hover:bg-pink hover:text-white cursor-pointer mb-20">
+            <label class="p-8 bg-white font-light text-black rounded-lg border border-pink hover:bg-pink hover:text-white cursor-pointer mb-20">
                 <input type='file'  name="F-PitchFile" required accept="file/pdf" />
             </label>
         </div>
