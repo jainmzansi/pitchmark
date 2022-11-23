@@ -208,7 +208,7 @@ const presentationratings = [
     src="https://ik.imagekit.io/pathventures/pitchmark/ResultsBlack.svg"
     alt="Results"
     />
-    <div className="text-3xl my-10 text-green">Where should we send your results?</div>
+    <div className="text-3xl my-10 text-black">Where should we send your results?</div>
   </div>
 </div>
 
