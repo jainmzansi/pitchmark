@@ -186,7 +186,7 @@ const presentationratings = [
     </div>
 
     <div className="mt-24">
-        <label htmlFor="F-PitchFile" className="text-3xl my-10 text-green block">Share your Pitch  <Required /></label>
+        <label htmlFor="F-PitchFile" className="text-3xl mt-10 mb-16 text-green block">Share your Pitch  <Required /></label>
         
         <div class="">
             <label class="p-8 bg-white font-light text-black rounded-lg border border-pink hover:bg-pink hover:text-white cursor-pointer mb-20">
